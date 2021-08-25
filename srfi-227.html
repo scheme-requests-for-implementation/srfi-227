@@ -195,7 +195,7 @@
       <dt class="entry"><code>(opt-lambda <span class="token">opt-formals</span> <span class="token">body</span>)</code></dt>
       <dd>
 	<p><i>Syntax:</i>
-	  <code><span class="token">Opt-formals<span></code> is either of the form
+	  <code><span class="token">Opt-formals</span></code> is either of the form
 	  <code>(<span class="token">variable<sub>1</sub></span> &hellip; <span class="token">variable<sub><var>n</var></sub></span>
 	  <span class="token">binding<sub>1</sub></span> &hellip;
 	  <span class="token">binding<sub>m</sub></span>)</code> or
@@ -275,9 +275,10 @@
 
       <dt class="entry"><code>
 	  (let-optionals* <span class="token">expression</span> <span class="token">opt-formals</span> <span class="token">body</span>)</code><span class="type">syntax</span></dt>
-      <p>Similar to <code>let-optionals</code> except that
-	<code>opt-lambda</code> is replaced with <code>opt*-lambda</code> in
-	the operational definition.</p>
+      <dd>
+	<p>Similar to <code>let-optionals</code> except that
+	  <code>opt-lambda</code> is replaced with <code>opt*-lambda</code> in
+	  the operational definition.</p></dd>
     </dl>
 
     <h2 id="implementation">Implementation</h2>
