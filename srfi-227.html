@@ -190,7 +190,15 @@
 
 (let-optionals* '(1 3)
     (x (y 2) (z (+ x y)))
-  (list x y z))<span class="result">(1 3 4)</span></pre>
+  (list x y z))<span class="result">(1 3 4)</span>
+
+(define-optionals (f1 x (y 1))
+  (list x y))
+(f1 0)<span class="result">(0 1)</span>
+
+(define-optionals* (f2 x (y (* x x)) . z)
+  (list x y z))
+(f2 3)<span class="result">(3 9 ())</span></pre>
 
     <h3>Syntax</h3>
 
