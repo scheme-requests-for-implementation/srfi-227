@@ -27,6 +27,9 @@
 	  (put 'opt*-lambda 'scheme-indent-function 1)
           (font-lock-add-keywords
            nil
-           '(("(\\(opt\\*-lambda\\)\\>" 1 font-lock-keyword-face)
+           '(("(\\(define-optionals\\|define-optionals\\*\\)\\>[ \t]*(*\\(\\sw+\\)?"
+              (1 font-lock-keyword-face)
+              (2 font-lock-function-name-face nil t))
+             ("(\\(opt\\*-lambda\\)\\>" 1 font-lock-keyword-face)
 	     ("(\\(rec\\)\\>" 1 font-lock-keyword-face)
 	     )))))))
