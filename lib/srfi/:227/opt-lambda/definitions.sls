@@ -22,61 +22,21 @@
 ;; CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ;; SOFTWARE.
 
-(import (rnrs (6))
-	(srfi :227)
-        (srfi :227 opt-lambda definitions))
+(library (srfi :227 opt-lambda definitions)
+  (export define-optionals
+          define-optionals*)
+  (import (rnrs (6))
+          (srfi :227 opt-lambda))
 
-(define f
-  (opt*-lambda (x (y 1) (z (* x x)))
-    (list x y z)))
+  (define-syntax define-optionals
+    (syntax-rules ()
+      [(_ (name . opt-formals) body1 ... body2)
+       (define name (opt-lambda opt-formals body1 ... body2))]))
 
-(assert (equal? '(1 2 3) (f 1 2 3)))
-(assert (equal? '(2 3 4) (f 2 3)))
-(assert (equal? '(2 1 4) (f 2)))
-
-(define g
-  (let ([x 4])
-    (opt-lambda (x (y 1) (z (* x x)))
-      (list x y z))))
-
-(assert (equal? '(1 2 3) (g 1 2 3)))
-(assert (equal? '(2 3 16) (g 2 3)))
-(assert (equal? '(2 1 16) (g 2)))
-
-(define h
-  (opt-lambda args args))
-
-(assert (equal? '(1 2) (h 1 2)))
-
-(assert (equal? '(1 (2))
-		(let-optionals
-		    '(1 2)
-		    (x . y)
-		  (list x y))))
-
-(assert (equal? '(1 2 3)
-		(let-optionals
-		    '(1)
-		    (x (y 2) (z 3))
-		  (list x y z))))
-
-(assert (equal? '(1 3 4)
-		(let-optionals*
-		    '(1 3)
-		    (x (y 2) (z (+ x y)))
-		    (list x y z))))
-
-(assert (equal? '(0 1)
-                (let* ()
-                  (define-optionals (f x (y 1))
-                    (list x y))
-                  (f 0))))
-
-(assert (equal? '(3 9 ())
-                (let* ()
-                  (define-optionals* (f x (y (* x x)) . z)
-                    (list x y z))
-                  (f 3))))
+  (define-syntax define-optionals*
+    (syntax-rules ()
+      [(_ (name . opt-formals) body1 ... body2)
+       (define name (opt*-lambda opt-formals body1 ... body2))])))
 
 ;; Local Variables:
 ;; mode: scheme

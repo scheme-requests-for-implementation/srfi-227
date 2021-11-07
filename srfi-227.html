@@ -284,6 +284,34 @@
 	  the operational definition.</p></dd>
     </dl>
 
+    <p>The following definition syntax is exported by the <code>(srfi
+        :227 opt-lambda definitions)</code> sublibrary (for R<sup>6</sup>RS systems)
+      and by the <code>(srfi 227 definition)</code> sublibrary (for
+      R<sup>7</sup>RS systems).</p>
+
+    <dl class="entries">
+      <dt class="entry"><code>
+	  (define-optionals (<span class="token">identifier</span> . <span class="token">opt-formals</span>) <span class="token">body</span>)</code><span class="type">syntax</span></dt>
+      <dd><p><i>Syntax:</i>
+	  <code><span class="token">Opt-formals</span></code> is as in
+	  a <code>opt-lambda</code> expression.</p>
+	<p><i>Semantics:</i>
+	  Operationally equivalent to
+	  <code>(define <span class="token">identifier</span>
+	  (opt-lambda <span class="token">opt-formals</span> <span class="token">body</span>))</code>
+      </dd>
+      <dt class="entry"><code>
+	  (define-optionals* (<span class="token">identifier</span> . <span class="token">opt-formals</span>) <span class="token">body</span>)</code><span class="type">syntax</span></dt>
+      <dd><p><i>Syntax:</i>
+	  <code><span class="token">Opt-formals</span></code> is as in
+	  a <code>opt-lambda</code> expression.</p>
+	<p><i>Semantics:</i>
+	  Operationally equivalent to
+	  <code>(define <span class="token">identifier</span>
+	  (opt*-lambda <span class="token">opt-formals</span> <span class="token">body</span>))</code>
+      </dd>
+    </dl>
+
     <h2 id="implementation">Implementation</h2>
 
     <p>A portable implementation for R<sup>6</sup>RS is given by:</p>
@@ -310,7 +338,17 @@
   (define-syntax let-optionals*
     (syntax-rules ()
       [(_ expr opt-formals body1 ... body2)
-       (apply (opt*-lambda opt-formals body1 ... body2) expr)])))</pre>
+       (apply (opt*-lambda opt-formals body1 ... body2) expr)]))
+
+  (define-syntax define-optionals
+    (syntax-rules ()
+      [(_ (name . opt-formals) body1 ... body2)
+       (define name (opt-lambda opt-formals body1 ... body2))]))
+
+  (define-syntax define-optionals*
+    (syntax-rules ()
+      [(_ (name . opt-formals) body1 ... body2)
+       (define name (opt*-lambda opt-formals body1 ... body2))])))</pre>
 
     <p>It uses the following helper library:</p>
 
