@@ -120,7 +120,7 @@
     <p>This SRFI specifies the <code>opt-lambda</code> syntax, which
       generalizes <code>lambda</code>.  An <code>opt-lambda</code> expression
       evaluates to a procedure that takes a number of required and a number of
-      optional (positional) arguments, whose default values are determined by
+      optional (positional) arguments whose default values are determined by
       evaluating corresponding expressions when the procedure is called.</p>
 
     <p>This SRFI also specifies a variation <code>opt*-lambda</code>, which is
@@ -142,7 +142,7 @@
       with a <code>lambda</code> form taking a rest argument or
       a <code>case-lambda</code> form.  Both approaches are not optimal.  The
       disadvantage of using <code>lambda</code> is that the rest argument,
-      which is an implementation-detail, has to be made explicit, that it has
+      which is an implementation detail, has to be made explicit, that it has
       to be destructured explicitly, and that there is some reliance on
       compiler optimizations to eliminate heap allocation of the rest argument.
       The disadvantage of using <code>case-lambda</code> is that the size of
