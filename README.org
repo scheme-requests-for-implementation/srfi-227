@@ -8,7 +8,9 @@ keywords: [[https://srfi.schemers.org/?keywords=binding][Binding]]
 
 This repository hosts [[https://srfi.schemers.org/srfi-227/][SRFI 227]]: Optional Arguments, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
-This SRFI is in /draft/ status.
+This SRFI is in /final/ status.
+
+See also [[https://srfi.schemers.org/srfi-89/][SRFI 89: Optional positional and named parameters]].
 
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-227/srfi-227.html][SRFI Document]].
 

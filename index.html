@@ -22,8 +22,8 @@
     <h1>SRFI 227: Optional Arguments</h1>
     <p class="authors">by Marc Nieper-Wißkirchen (spec and R6RS implementation) and Daphne Preston-Kendal (R7RS implementation)</p>
     <p class="based-on"></p>
-    <p class="status">status: <em>draft</em> (2021-08-25)</p>
-    <p class="keywords">keywords: <a href="https://srfi.schemers.org/?keywords=binding">Binding</a></p>
+    <p class="status">status: <em>final</em> (2021-11-16)</p>
+    <p class="keywords">keywords: <a href="https://srfi.schemers.org/?keywords=binding">Binding</a></p><span class="see-also">See also <a href="/srfi-89/">SRFI 89: Optional positional and named parameters</a>.</span>
 
     <ul class="info">
       <li><a href="srfi-227.html">The SRFI Document</a></li>
@@ -79,10 +79,14 @@
     <h2>Abstract</h2>    <p>This SRFI specifies the <code>opt-lambda</code> syntax, which
       generalizes <code>lambda</code>.  An <code>opt-lambda</code> expression
       evaluates to a procedure that takes a number of required and a number of
-      optional (positional) arguments, whose default values are determined by
+      optional (positional) arguments whose default values are determined by
       evaluating corresponding expressions when the procedure is called.</p>
 
     <p>This SRFI also specifies a variation <code>opt*-lambda</code>, which is
       to <code>opt-lambda</code> as <code>let*</code> is to <code>let</code>
       and the related binding constructs <code>let-optionals</code>
-      and <code>let-optionals*</code>.</p></body></html>
+      and <code>let-optionals*</code>.</p>
+
+    <p>Finally, for those who prefer less explicit procedure
+      definitions, a sublibrary provides <code>define-optionals</code>
+      and <code>define-optionals*</code>.</p></body></html>
