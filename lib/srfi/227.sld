@@ -8,7 +8,9 @@
   (export (rename lambda-optional opt-lambda)
           (rename lambda-optional* opt*-lambda)
           let-optionals
-          let-optionals*)
+          let-optionals*
+          (rename define-optional define-optionals)
+          (rename define-optional* define-optionals*))
   (include "lambda-optional.scm")
 
   (begin
